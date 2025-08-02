@@ -12,6 +12,7 @@ app = FastAPI(title="Books API")
 app.include_router(books.router)
 app.include_router(ml.router)
 app.include_router(auth_routes.router)
+app.include_router(trigger.router)
 
 @app.middleware("http")
 async def log_requests(request: Request, call_next):
@@ -31,8 +32,3 @@ async def log_requests(request: Request, call_next):
 
     return response
 
-# 🟢 . Trigger
-@app.post("/api/v1/scraping/trigger")
-def trigger_scraping(current_user: dict = Depends(get_current_user)):
-    # Simulação de scraping
-    return {"message": f"Scraping iniciado pelo usuário {current_user['username']}"}
