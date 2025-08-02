@@ -16,7 +16,7 @@ if st.button("🔮 Prever"):
     }
 
     try:
-        response = requests.post("http://localhost:8000/api/v1/ml/predictions", json=payload)
+        response = requests.post("https://projetomodulo1.onrender.com/api/v1/ml/predictions", json=payload)
 
         if response.status_code == 200:
             prediction = response.json().get("prediction")
