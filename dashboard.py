@@ -47,3 +47,7 @@ def show_metrics_dashboard():
     st.subheader("⏳ Tempo de Resposta ao Longo do Tempo")
     df_sorted = df.sort_values("timestamp")
     st.line_chart(df_sorted.set_index("timestamp")["duration"])
+
+# ✅ Executa o dashboard
+if __name__ == "__main__":
+    show_metrics_dashboard()
