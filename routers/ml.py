@@ -7,26 +7,24 @@ from schemas import PredictionInput
 
 router = APIRouter(prefix="/api/v1/ml", tags=["ML"])
 
-
+# 📊 Rota para obter dados usados no treinamento do modelo
 @router.get("/training-data")
 def get_training_data(db: Session = Depends(get_db)):
     books = db.query(Book).all()
 
-    # Converte os dados para dicionário
     data = [
         {
             "price": book.price,
             "rating": book.rating,
             "availability": book.availability,
-            #"category": book.category,
-            # Exemplo de label: popularidade
-            "popular": 1 if book.rating >= 4 else 0
+            "popular": 1 if book.rating >= 4 else 0  # Rótulo baseado na avaliação
         }
         for book in books
     ]
 
     return data
 
+# 🧠 Rota para extrair as features do modelo de ML
 @router.get("/features")
 def get_ml_features(db: Session = Depends(get_db)):
     books = db.query(Book).all()
@@ -42,7 +40,7 @@ def get_ml_features(db: Session = Depends(get_db)):
 
     return {"features": features}
 
-
+# 🔮 Rota para fazer previsão de popularidade com base nas features fornecidas
 @router.post("/predictions")
 def make_prediction(payload: PredictionInput):
     try:
