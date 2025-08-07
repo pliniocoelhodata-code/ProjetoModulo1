@@ -51,22 +51,23 @@ pip install -r requirements.txt
 
 ## 🚀 Execução Local
 
-### 1. Treinar o modelo
 
-```bash
-python train_model.py
-```
-
-### 2. Popular o banco de dados com scraping
+### 1. Popular o banco de dados com scraping
 
 ```bash
 python populate_db.py
 ```
 
-### 3. Iniciar o servidor FastAPI
+### 2. Iniciar o servidor FastAPI
 
 ```bash
 uvicorn main:app --reload --port 8000
+```
+
+### 3. Treinar o modelo
+
+```bash
+python train_model.py
 ```
 
 Acesse a documentação interativa em:  
