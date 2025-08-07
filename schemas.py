@@ -11,7 +11,8 @@ class BookBase(BaseModel):
 
 
     class Config:
-        from_attributes = True
+        # Permite criar instâncias do Pydantic a partir de objetos ORM (ex.: SQLAlchemy)
+        orm_mode = True
 
 
 class PredictionInput(BaseModel):
