@@ -1,23 +1,34 @@
+"""
+Script para popular o banco de dados com livros coletados via web scraping.
+
+Executa:
+- Extração de livros com `scrape_all_books`
+- Inserção ou atualização com `db.merge`
+"""
+
 from scraper import scrape_all_books
 from database import SessionLocal
 from models import Book
 
-db = SessionLocal()
-books, _ = scrape_all_books()
-total = len(books)
+def main():
+    db = SessionLocal()
 
-print(f"🔄 Iniciando inserção de {total} livros...\n")
+    try:
+        books, _ = scrape_all_books()
+        total = len(books)
 
-for idx, b in enumerate(books, start=1):
-    book = Book(**b)
-    db.merge(book)
+        print(f"🔄 Iniciando inserção de {total} livros...\n")
 
-    # Mostrar progresso a cada 5% ou no fim
-    percentage = (idx / total) * 100
-    if idx == total or int(percentage) % 5 == 0 and (idx == 1 or int(((idx - 1) / total) * 100) != int(percentage)):
-        print(f"📊 Progresso: {percentage:.1f}% ({idx}/{total})")
+        for b in books:
+            book = Book(**b)
+            db.merge(book)
 
-db.commit()
-db.close()
+        db.commit()
+        print("✅ Todos os dados foram inseridos com sucesso!")
 
-print("\n✅ Todos os dados foram inseridos com sucesso!")
+    finally:
+        db.close()
+
+
+if __name__ == "__main__":
+    main()
