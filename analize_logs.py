@@ -49,3 +49,12 @@ def load_log_data(log_file: str = "logs/app.log") -> pd.DataFrame:
     parsed = [parse_log_line(line) for line in lines]
     data = [entry for entry in parsed if entry]
     return pd.DataFrame(data)
+
+# ✅ Executa a análise se rodar diretamente o arquivo
+    if __name__ == "__main__":
+    df = load_log_data()
+    if df.empty:
+        print("⚠️ Nenhum dado de log encontrado.")
+    else:
+        print("✅ Dados carregados com sucesso!")
+        print(df.head())
