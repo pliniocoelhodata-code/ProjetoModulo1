@@ -7,19 +7,25 @@ Este projeto desenvolve uma API RESTful com [FastAPI](https://fastapi.tiangolo.c
 ## 🏗️ Arquitetura do Projeto
 
 ```
-📁 app/
- ┣ 📂 ml/              # Código do modelo de machine learning
- ┃ ┗ 📄 predict.py
- ┣ 📂 routes/          # Arquivos com as rotas da API
- ┃ ┗ 📄 ml_routes.py
- ┣ 📂 scraper/         # Função de scraping
- ┃ ┗ 📄 scraper.py
- ┣ 📄 main.py          # Inicialização da aplicação FastAPI
- ┣ 📄 database.py      # Conexão com banco de dados SQLite
- ┣ 📄 models.py        # ORM com SQLAlchemy
- ┣ 📄 schemas.py       # Validação com Pydantic
- ┣ 📄 populate_db.py   # Script para popular o banco com scraping
- ┣ 📄 train_model.py   # Script de treino e salvamento do modelo
+📁 logs/               # Arquivos de logs da aplicação
+📁 ml/                 # Código relacionado a machine learning
+📁 routers/            # Arquivos com as rotas da API
+📄 README.md           # Documentação do projeto
+📄 analize_logs.py     # Script para análise de logs
+📄 auth.py             # Rotas e lógica de autenticação (JWT)
+📄 books.db            # Banco de dados SQLite
+📄 dashboard.py        # Dashboard de Performance do API
+📄 database.py         # Conexão com o banco de dados
+📄 init_db.py          # Inicializa e cria as tabelas do banco
+📄 logger.py           # Configuração do logger
+📄 main.py             # Inicialização da aplicação FastAPI
+📄 models.py           # Modelos ORM com SQLAlchemy
+📄 populate_db.py      # Script para popular o banco com scraping
+📄 requirements.txt    # Dependências do projeto
+📄 schemas.py          # Schemas Pydantic para validação
+📄 scraper.py          # Função de scraping dos dados
+📄 streamlit_predict.py# Interface Streamlit para predição
+
 ```
 
 ---
@@ -178,4 +184,4 @@ streamlit==1.25.0
 ## 👨‍💻 Autor
 
 Plínio Ramos Coelho Neto  
-[LinkedIn](https://www.linkedin.com/in/seu-perfil) • [GitHub](https://github.com/seu-usuario)
+[LinkedIn](https://www.linkedin.com/in/plinio-coelho-01a581177/) • [GitHub](https://github.com/pliniocoelhodata-code)
